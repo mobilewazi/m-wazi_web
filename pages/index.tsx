@@ -2,11 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-import {generateToken} from "./api/daraja";
-
 const Home: NextPage = () => {
 
-  console.log('generate token', generateToken());
   return (
     <div className={styles.container}>
       <Head>
