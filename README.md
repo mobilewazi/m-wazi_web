@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mobilewazi/m-wazi_web/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mobilewazi/m-wazi_web/tree/main)## Getting Started
 
 First, run the development server:
 
