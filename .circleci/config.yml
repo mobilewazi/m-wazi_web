@@ -1,23 +1,25 @@
 version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
 jobs:
   build:
-    working_directory: ~/repo
     docker:
-      - image: circleci/node:10.16.3
+      - image: cimg/node:16.14.2
     steps:
       - checkout
-      - run:
-          name: yarn update
-          command: "sudo npm install -g yarn"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Restore yarn package cache
+          key: v1-cache-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}-{{ arch }}
       - run:
-          name: Install Dependencies
-          command: yarn install
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Save yarn package cache
           paths:
-            - ./node_modules
+            - ~/.cache/yarn
+          key: v1-cache-dependencies-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}-{{ arch }}
       - run:
-          name: Run tests
-          command: yarn run test
+          name: Run test
+          command: yarn test
